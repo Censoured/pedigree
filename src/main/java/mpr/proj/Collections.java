@@ -7,10 +7,9 @@ import java.util.*;
 
 public abstract class Collections {
 	
-	static Connection con = null;
-	
-	public static Set<Breeder> getBreeders(long id)	{
+	public static Set<Breeder> getBreeders()	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			Set<Breeder> dane = new HashSet<Breeder>();
 			String queryStr = "SELECT * FROM BREEDER";
 			Statement stmt = con.createStatement();
@@ -28,6 +27,7 @@ public abstract class Collections {
 	
 	public static Set<Horse> getHorses()	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			Set<Horse> dane = new HashSet<Horse>();
 			String queryStr = "SELECT * FROM HORSE";
 			Statement stmt = con.createStatement();
@@ -45,6 +45,7 @@ public abstract class Collections {
 	
 	public static Set<Color> getColors()	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			Set<Color> dane = new HashSet<Color>();
 			String queryStr = "SELECT * FROM COLOR";
 			Statement stmt = con.createStatement();
@@ -63,6 +64,7 @@ public abstract class Collections {
 	
 	public static Set<Country> getCountries()	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			Set<Country> dane = new HashSet<Country>();
 			String queryStr = "SELECT * FROM COUNTRY";
 			Statement stmt = con.createStatement();
@@ -80,6 +82,7 @@ public abstract class Collections {
 	
 	public static Color colorID(long id)	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "SELECT * FROM COLOR WHERE COLOR.ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
@@ -95,6 +98,7 @@ public abstract class Collections {
 	
 	public static Country countryID(long id)	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "SELECT * FROM COUNTRY WHERE ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
@@ -110,6 +114,7 @@ public abstract class Collections {
 	
 	public static Sex sexID(long id)	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "SELECT * FROM SEX WHERE SEX.ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
@@ -125,6 +130,7 @@ public abstract class Collections {
 	
 	public static Breeder breederID(long id)	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "SELECT * FROM BREEDER WHERE BREEDER.ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
@@ -140,6 +146,7 @@ public abstract class Collections {
 	
 	public static Horse horseID(long id)	{
 		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "SELECT * FROM HORSE WHERE HORSE.ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
