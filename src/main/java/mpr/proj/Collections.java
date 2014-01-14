@@ -101,7 +101,7 @@ public abstract class Collections {
 			if(rs.next())	{
 				return new Country(rs.getLong("ID"),rs.getString("NAME"),rs.getString("CODE"));
 			}
-			}
+		}
 		catch (Exception ex)	{
 			System.out.println(ex.getMessage());
 		}
