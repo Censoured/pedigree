@@ -5,6 +5,11 @@ import java.sql.Date;
 public class DateOfBirth {
     private Date date;
     private Boolean yearOnly;
+    
+    public DateOfBirth(Date dob, boolean yo)	{
+    	this.date = dob;
+    	this.yearOnly = yo;
+    }
 
     public void setDate(Date date, Boolean yearOnly) {
         this.date = date;

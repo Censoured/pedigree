@@ -11,6 +11,11 @@ public class Breeder {
         this.name = name;
         this.country = country;
     }
+    
+    @Override
+	public String toString()	{
+		return String.format("%4d %12s %18s", this.id, this.name, this.country.getName());
+	}
 
     public long getId() {
         return id;

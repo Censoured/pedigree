@@ -30,6 +30,52 @@ public class Horse {
     	return name;
     }
 
-    // oraz kolejne "settery i gettery"
+    public void setSex(Sex sex)	{
+    	this.sex = sex;
+    }
+    
+    public Sex getSex()	{
+    	return sex;
+    }
+    
+    public void setDob(DateOfBirth dob)	{
+    	this.dob = dob;
+    }
+    
+    public DateOfBirth getDob()	{
+    	return dob;
+    }
+    
+    public void setColor(Color color){
+    	this.color = color;
+    }
+    
+    public Color getColor()	{
+    	return color;
+    }
+    
+    public void setSire(Horse sire)	{
+    	this.sire = sire;
+    }
+    
+    public Horse getSire()	{
+    	return sire;
+    }
+    
+    public void setDam(Horse dam)	{
+    	this.dam = dam;
+    }
+    
+    public Horse getDam()	{
+    	return dam;
+    }
+    
+    public void setBreeder(Breeder breeder){
+    	this.breeder = breeder;
+    }
+    
+    public Breeder getBreeder()	{
+    	return breeder;
+    }
 
 }

@@ -1,6 +1,9 @@
 package mpr.proj;
 
 import java.sql.*;
+import java.util.*;
+
+import mpr.proj.pedigree.*;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -33,10 +36,40 @@ public class Main {
 	    		System.out.print("Wybierz tabele do podejrzenia: ");
 	    		int podglad = EasyIn.getInt();
 	    		if(podglad==1)	{
-	    			
+	    			try	{
+	    				Set<Breeder> zbior = new HashSet<Breeder>();
+	    				String queryStr = "SELECT * FROM BREEDER";
+	    				Country id=Collections.countryID(1);
+	    				Statement stmt = con.createStatement();
+	    				ResultSet rs = stmt.executeQuery(queryStr);
+	    				/*while(rs.next())	{
+	    					zbior.add(new Breeder(rs.getLong("ID"), rs.getString("NAME"), Collections.countryID(rs.getLong("COUNTRY"))));
+	    				}
+	    				for(Breeder a: zbior)	{
+	    					System.out.println(a.toString());
+	    				}*/
+	    				System.out.println("Nazwa:");
+	    			}
+	    			catch (Exception ex)	{
+	    				System.out.println(ex.getMessage());
+	    			}
 	    		}
 				if(podglad==2)	{
-					    			
+					try	{
+	    				Set<Color> zbior = new HashSet<Color>();
+	    				String queryStr = "SELECT * FROM COLOR";
+	    				Statement stmt = con.createStatement();
+	    				ResultSet rs = stmt.executeQuery(queryStr);
+	    				while(rs.next())	{
+	    					zbior.add(new Color(rs.getLong("ID"),rs.getString("LNAME"),rs.getString("SNAME")));
+	    				}	
+	    				for(Color a: zbior)	{
+	    					System.out.println(a.toString());
+	    				}
+	    			}
+	    			catch (Exception ex)	{
+	    				System.out.println(ex.getMessage());
+	    			}
 				}
 				if(podglad==3)	{
 					

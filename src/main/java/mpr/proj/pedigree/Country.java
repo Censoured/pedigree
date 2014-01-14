@@ -25,6 +25,11 @@ public class Country {
         this.name = name;
         this.code = code;
     }
+    
+    @Override
+	public String toString()	{
+		return String.format("%4d %8s %16s", this.id, this.name, this.code);
+	}
 
     @Override
     public boolean equals(Object aThat) {

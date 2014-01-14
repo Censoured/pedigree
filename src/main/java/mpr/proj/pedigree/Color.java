@@ -27,5 +27,9 @@ public class Color {
 	public String getSname() {
 		return sname;
 	}
-
+	
+	@Override
+	public String toString()	{
+		return String.format("%4d %12s %18s", this.id, this.lname, this.sname);
+	}
 }
