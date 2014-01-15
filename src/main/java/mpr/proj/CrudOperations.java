@@ -5,7 +5,7 @@ import java.util.*;
 
 import mpr.proj.pedigree.*;
 
-public abstract class DbOperations {
+public abstract class CrudOperations {
 	public static void showBreeders()	{
 		Set<Breeder> zbior = Collections.getBreeders();
 		for(Breeder a: zbior)	{

@@ -22,6 +22,12 @@ public abstract class Menus {
 		if(opis==4) {
 			deleteData();
 		}
+		if(opis==5){
+			Family.showHorseFamily(Collections.horseID(7));
+		}
+		if(opis==6)	{
+			Family.showHorseOffspring(Collections.horseID(6));
+		}
 	}
 	
 	public static void showData()	{
@@ -34,19 +40,19 @@ public abstract class Menus {
 		System.out.print("Wybierz tabele do podejrzenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
-			DbOperations.showBreeders();
+			CrudOperations.showBreeders();
 		}
 		if(podglad==2)	{
-			DbOperations.showColors();		
+			CrudOperations.showColors();		
 		}
 		if(podglad==3)	{
-			DbOperations.showCountries();
+			CrudOperations.showCountries();
 		}
 		if(podglad==4)	{
-			DbOperations.showHorses();
+			CrudOperations.showHorses();
 		}
 		if(podglad==5)	{
-			DbOperations.showSex();
+			CrudOperations.showSex();
 		}
 	}
 	public static void addData()	{
@@ -59,19 +65,19 @@ public abstract class Menus {
 		System.out.print("Wybierz tabele do powiekszenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
-			DbOperations.addBreeder();
+			CrudOperations.addBreeder();
 		}
 		if(podglad==2)	{
-			DbOperations.addColor();	
+			CrudOperations.addColor();	
 		}
 		if(podglad==3)	{
-			DbOperations.addCountry();
+			CrudOperations.addCountry();
 		}
 		if(podglad==4)	{
-			DbOperations.addHorse();
+			CrudOperations.addHorse();
 		}
 		if(podglad==5)	{
-			DbOperations.addSex();
+			CrudOperations.addSex();
 		}
 	}
 	public static void updateData()	{
@@ -84,19 +90,19 @@ public abstract class Menus {
 		System.out.print("Wybierz tabele do edycji: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
-			DbOperations.updateBreeder();
+			CrudOperations.updateBreeder();
 		}
 		if(podglad==2)	{
-			DbOperations.updateColor();		
+			CrudOperations.updateColor();		
 		}
 		if(podglad==3)	{
-			DbOperations.updateCountry();
+			CrudOperations.updateCountry();
 		}
 		if(podglad==4)	{
-			DbOperations.updateHorse();
+			CrudOperations.updateHorse();
 		}
 		if(podglad==5)	{
-			DbOperations.updateSex();
+			CrudOperations.updateSex();
 		}
 	}
 	public static void deleteData()	{
@@ -109,19 +115,19 @@ public abstract class Menus {
 		System.out.print("Wybierz tabele do pomniejszenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
-			DbOperations.deleteBreeder();
+			CrudOperations.deleteBreeder();
 		}
 		if(podglad==2)	{
-			DbOperations.deleteColor();
+			CrudOperations.deleteColor();
 		}
 		if(podglad==3)	{
-			DbOperations.deleteCountry();
+			CrudOperations.deleteCountry();
 		}
 		if(podglad==4)	{
-			DbOperations.deleteHorse();
+			CrudOperations.deleteHorse();
 		}
 		if(podglad==5)	{
-			DbOperations.deleteSex();
+			CrudOperations.deleteSex();
 		}
 	}	
 }

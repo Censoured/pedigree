@@ -13,9 +13,9 @@ public class Breeder {
     }
     
     @Override
-	public String toString()	{
-		return String.format("%4d %12s %18s", this.id, this.name, this.country.getName());
-	}
+    public String toString() {
+            return String.format("%4d %60s %30s", this.id, this.name, this.country.getName());
+    }
 
     public long getId() {
         return id;

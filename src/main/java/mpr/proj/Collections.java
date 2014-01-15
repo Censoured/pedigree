@@ -43,6 +43,8 @@ public abstract class Collections {
 		return null;
 	}
 	
+	
+	
 	public static Set<Color> getColors()	{
 		try	{
 			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
@@ -119,7 +121,7 @@ public abstract class Collections {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);
 			if(rs.next())	{
-				return Sex.valueOf(rs.getString("NAME"));
+				return Sex.valueOf(rs.getString("NAME").toUpperCase());
 			}
 		}
 		catch (Exception ex)	{
@@ -153,6 +155,24 @@ public abstract class Collections {
 			if(rs.next())	{
 				return new Horse(rs.getLong("ID"), rs.getString("NAME"), sexID(rs.getLong("SEX")), new DateOfBirth(rs.getDate("DOB"), rs.getBoolean("YEARONLY")), colorID(rs.getLong("COLOR")), horseID(rs.getLong("SIRE")), horseID(rs.getLong("DAM")), breederID(rs.getLong("BREEDER")));
 			}
+		}
+		catch (Exception ex)	{
+			System.out.println(ex.getMessage());
+		}
+		return null;
+	}
+	
+	public static Set<Horse> getHorseOffspring(long id)	{
+		try	{
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
+			Set<Horse> dane = new HashSet<Horse>();
+			String queryStr = "SELECT * FROM HORSE WHERE DAM="+id+" OR SIRE="+id;
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(queryStr);
+			while(rs.next())	{
+				dane.add(new Horse(rs.getLong("ID"), rs.getString("NAME"), sexID(rs.getLong("SEX")), new DateOfBirth(rs.getDate("DOB"), rs.getBoolean("YEARONLY")), colorID(rs.getLong("COLOR")), horseID(rs.getLong("SIRE")), horseID(rs.getLong("DAM")), breederID(rs.getLong("BREEDER"))));
+			}
+			return dane;
 		}
 		catch (Exception ex)	{
 			System.out.println(ex.getMessage());
