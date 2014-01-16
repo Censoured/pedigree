@@ -33,7 +33,7 @@ public abstract class CrudOperations {
 		Set<Horse> zbior = Collections.getHorses();
 		for(Horse a: zbior)	{
 			System.out.println(a.toString());
-		}
+		} 
 	}
 	
 	public static void addBreeder()	{

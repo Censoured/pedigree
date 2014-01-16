@@ -11,7 +11,7 @@ public class Horse {
     private Horse dam;
     private Breeder breeder;
 
-    public Horse(long id, String name, Sex sex, DateOfBirth dob, Color color, Horse sire, Horse dam, Breeder breder) {
+    public Horse(long id, String name, Sex sex, DateOfBirth dob, Color color, Horse sire, Horse dam, Breeder breeder) {
         this.id = id;
         this.name = name;
         this.sex = sex;
@@ -88,7 +88,7 @@ public class Horse {
     
     @Override
     public String toString() {
-            return String.format("%4d %30s %8s %10s %8s %30s %30s %30s",
+            return String.format("%4d %15s %8s %10s %8s %15s %15s %15s",
                             this.id,
                             this.name,
                             this.sex.toString(),

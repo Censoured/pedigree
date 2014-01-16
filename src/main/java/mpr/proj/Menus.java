@@ -26,7 +26,7 @@ public abstract class Menus {
 			Family.showHorseFamily(Collections.horseID(7));
 		}
 		if(opis==6)	{
-			Family.showHorseOffspring(Collections.horseID(6));
+			Family.showHorseOffspring(Collections.horseID(12));
 		}
 	}
 	

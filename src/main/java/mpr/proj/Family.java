@@ -20,7 +20,7 @@ public abstract class Family {
 		System.out.println("Potomstwo konia "+horse.getName());
 		Set<Horse> zbior = Collections.getHorseOffspring(horse.getID());
 		for(Horse a: zbior)	{
-			System.out.println(a.toString());
+			System.out.print(a.getName()+", ");
 		}
 	}
 }
