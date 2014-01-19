@@ -37,7 +37,7 @@ public abstract class PdfExport {
 		try {
 			System.out.println("Prosze czekac, trwa tworzenie pliku...");
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(filename+"_ancestors.pdf"));
 			document.open();
 			addMetaData(document);
 			addContentAncestors(document, horse);
@@ -87,11 +87,6 @@ public abstract class PdfExport {
 
 	private static void createTable(Section subCatPart, Horse horse) throws BadElementException {
 		PdfPTable table = new PdfPTable(7);
-
-	    // t.setBorderColor(BaseColor.GRAY);
-	    // t.setPadding(4);
-	    // t.setSpacing(4);
-	    // t.setBorderWidth(1);
 		//pierwszy wiersz
 	    table.addCell(" ");
 	    table.addCell(" ");

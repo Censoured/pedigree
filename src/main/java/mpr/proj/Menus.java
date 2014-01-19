@@ -67,7 +67,6 @@ public abstract class Menus {
 		System.out.println("2. Color");
 		System.out.println("3. Country");
 		System.out.println("4. Horse");
-		System.out.println("5. Sex");
 		System.out.print("Wybierz tabele do powiekszenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
@@ -82,9 +81,6 @@ public abstract class Menus {
 		if(podglad==4)	{
 			CrudOperations.addHorse();
 		}
-		if(podglad==5)	{
-			CrudOperations.addSex();
-		}
 	}
 	public static void updateData()	{
 		System.out.println("Edycja danych.");
@@ -92,7 +88,6 @@ public abstract class Menus {
 		System.out.println("2. Color");
 		System.out.println("3. Country");
 		System.out.println("4. Horse");
-		System.out.println("5. Sex");
 		System.out.print("Wybierz tabele do edycji: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
@@ -107,9 +102,6 @@ public abstract class Menus {
 		if(podglad==4)	{
 			CrudOperations.updateHorse();
 		}
-		if(podglad==5)	{
-			CrudOperations.updateSex();
-		}
 	}
 	public static void deleteData()	{
 		System.out.println("Usuwanie danych");
@@ -117,7 +109,6 @@ public abstract class Menus {
 		System.out.println("2. Color");
 		System.out.println("3. Country");
 		System.out.println("4. Horse");
-		System.out.println("5. Sex");
 		System.out.print("Wybierz tabele do pomniejszenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
@@ -131,9 +122,6 @@ public abstract class Menus {
 		}
 		if(podglad==4)	{
 			CrudOperations.deleteHorse();
-		}
-		if(podglad==5)	{
-			CrudOperations.deleteSex();
 		}
 	}	
 	

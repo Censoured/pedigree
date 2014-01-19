@@ -7,6 +7,11 @@ import mpr.proj.pedigree.*;
 
 public abstract class CrudOperations {
 	
+	static Connection con = null;
+	public static void setConnection(Connection dcon)	{
+		con = dcon;
+	}
+	
 	public static void showBreeders()	{
 		Set<Breeder> zbior = Collections.getBreeders();
 		for(Breeder a: zbior)	{
@@ -43,7 +48,6 @@ public abstract class CrudOperations {
 	
 	public static void addBreeder()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "INSERT INTO BREEDER (NAME, COUNTRY) VALUES (?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj godnosc: ");
@@ -65,7 +69,6 @@ public abstract class CrudOperations {
 	}	
 	public static void addColor()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "INSERT INTO COLOR (LNAME, SNAME) VALUES (?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj dluga nazwe: ");
@@ -87,7 +90,6 @@ public abstract class CrudOperations {
 	}
 	public static void addCountry()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "INSERT INTO COUNTRY (NAME, CODE) VALUES (?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj nazwe: ");
@@ -109,7 +111,6 @@ public abstract class CrudOperations {
 	}	
 	public static void addHorse()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "INSERT INTO HORSE (NAME, SEX, COLOR, DOB, YEARONLY, DAM, SIRE, BREEDER) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj imie: ");
@@ -147,29 +148,9 @@ public abstract class CrudOperations {
 			System.out.println(ex.getMessage());
 		}
 	}
-	public static void addSex()	{
-		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
-			String queryStr = "INSERT INTO SEX (NAME) VALUES (?)";
-			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj nazwe: ");
-			String godnosc = EasyIn.getString();
-			stmt.setString(1, godnosc);
-			if(stmt.executeUpdate()>=1)	{
-				System.out.println("Dodano wpis "+godnosc+" do tabeli Breeder.");
-			} 
-			else	{
-				System.out.println("Nie dodano nowego wpisu");
-			}
-		}
-		catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
 	
 	public static void updateBreeder()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "UPDATE BREEDER SET NAME=(?), COUNTRY=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj ID wpisu do edytowania: ");
@@ -194,7 +175,6 @@ public abstract class CrudOperations {
 	}
 	public static void updateColor()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "UPDATE COLOR SET LNAME=(?), SNAME=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj ID wpisu do edytowania: ");
@@ -219,7 +199,6 @@ public abstract class CrudOperations {
 	}
 	public static void updateCountry()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "UPDATE COUNTRY SET NAME=(?), CODE=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj ID wpisu do edytowania: ");
@@ -244,7 +223,6 @@ public abstract class CrudOperations {
 	}
 	public static void updateHorse()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "UPDATE HORSE SET NAME=(?), SEX=(?), COLOR=(?), DOB=(?), YEARONLY=(?), DAM=(?), SIRE=(?), BREEDER=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj ID wpisu do edytowania: ");
@@ -285,29 +263,9 @@ public abstract class CrudOperations {
 			System.out.println(ex.getMessage());
 		}
 	}
-	public static void updateSex()	{
-		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
-			String queryStr = "INSERT INTO SEX (NAME) VALUES (?)";
-			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj nazwe: ");
-			String godnosc = EasyIn.getString();
-			stmt.setString(1, godnosc);
-			if(stmt.executeUpdate()>=1)	{
-				System.out.println("Dodano wpis "+godnosc+" do tabeli Breeder.");
-			} 
-			else	{
-				System.out.println("Nie dodano nowego wpisu");
-			}
-		}
-		catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
 	
 	public static void deleteBreeder()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "DELETE FROM BREEDER WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
@@ -326,7 +284,6 @@ public abstract class CrudOperations {
 	}
 	public static void deleteColor()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "DELETE FROM COLOR WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
@@ -345,7 +302,6 @@ public abstract class CrudOperations {
 	}
 	public static void deleteCountry()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "DELETE FROM COUNTRY WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
@@ -364,7 +320,6 @@ public abstract class CrudOperations {
 	}
 	public static void deleteHorse()	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
 			String queryStr = "DELETE FROM HORSE WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
@@ -381,24 +336,4 @@ public abstract class CrudOperations {
 			System.out.println(ex.getMessage());
 		}
 	}
-	public static void deleteSex()	{
-		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
-			String queryStr = "DELETE FROM SEX WHERE ID=(?)";
-			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
-			int id = EasyIn.getInt();
-			stmt.setInt(1, id);
-			if(stmt.executeUpdate()>=1)	{
-				System.out.println("Usunieto wpis o id="+id+" z tabeli Sex.");
-			} 
-			else	{
-				System.out.println("Nie usunieto wpisu");
-			}
-		}
-		catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
-
 }
