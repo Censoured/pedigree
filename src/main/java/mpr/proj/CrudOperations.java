@@ -6,6 +6,7 @@ import java.util.*;
 import mpr.proj.pedigree.*;
 
 public abstract class CrudOperations {
+	
 	public static void showBreeders()	{
 		Set<Breeder> zbior = Collections.getBreeders();
 		for(Breeder a: zbior)	{
@@ -27,6 +28,10 @@ public abstract class CrudOperations {
 	}	
 	
 	public static void showSex()	{
+		Set<String> zbior = Collections.getSex();
+		for(String a: zbior)	{
+			System.out.println(a.toString());
+		} 
 	}	
 	
 	public static void showHorses()	{
