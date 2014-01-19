@@ -100,7 +100,7 @@ public abstract class Collections {
 	
 	public static Country countryID(long id)	{
 		try	{
-			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");;
+			Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/workdb","sa","");
 			String queryStr = "SELECT * FROM COUNTRY WHERE ID="+id;
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(queryStr);

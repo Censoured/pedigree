@@ -94,9 +94,9 @@ public class Horse {
                             this.sex.toString(),
                             this.dob.toString(),
                             this.color.getSname(),
-                            this.sire != null ? this.sire.getName() : "unknown",
-                            this.dam != null ? this.dam.getName() : "unknown",
-                            this.breeder != null ? this.breeder.getName() : "unknown");
+                            this.sire != null ? this.sire.getName() : "Nieznane",
+                            this.dam != null ? this.dam.getName() : "Nieznane",
+                            this.breeder != null ? this.breeder.getName() : "Nieznane");
     }
 
 }

@@ -3,30 +3,36 @@ package mpr.proj;
 public abstract class Menus {
 	 	
 	public static void mainMenu()	{
-		System.out.println("Menu glowne:");
-		System.out.println("1. Podejrzyj tabele");
-		System.out.println("2. Dodaj dane");
-		System.out.println("3. Edytuj dane");
-		System.out.println("4. Usun dane");
-		System.out.print("Podaj operacje do wykonania: ");
-		int opis = EasyIn.getInt();
-		if(opis==1) {
-			showData();
-		}
-		if(opis==2) {
-			addData();
-		}
-		if(opis==3) {
-			updateData();
-		}
-		if(opis==4) {
-			deleteData();
-		}
-		if(opis==5){
-			Family.showHorseFamily(Collections.horseID(7));
-		}
-		if(opis==6)	{
-			Family.showHorseOffspring(Collections.horseID(12));
+		int opis = 0;
+		while(opis!=7)	{
+			System.out.println("Menu glowne:");
+			System.out.println("1. Podejrzyj tabele");
+			System.out.println("2. Dodaj dane");
+			System.out.println("3. Edytuj dane");
+			System.out.println("4. Usun dane");
+			System.out.println("5. Przodkowie konia");
+			System.out.println("6. Potomstwo konia");
+			System.out.println("7. Zakoncz program");
+			System.out.print("Podaj operacje do wykonania: ");
+			opis = EasyIn.getInt();
+			if(opis==1) {
+				showData();
+			}
+			if(opis==2) {
+				addData();
+			}
+			if(opis==3) {
+				updateData();
+			}
+			if(opis==4) {
+				deleteData();
+			}
+			if(opis==5){
+				showAncestors();
+			}
+			if(opis==6)	{
+				showOffsprings();
+			}
 		}
 	}
 	
@@ -130,4 +136,20 @@ public abstract class Menus {
 			CrudOperations.deleteSex();
 		}
 	}	
+	
+	public static void showAncestors(){
+		System.out.print("Podaj ID konia, ktorego przodkow chcesz znalezc: ");
+		int wybor = EasyIn.getInt();
+		System.out.println("Trwa przeszukiwanie bazy, prosze czekac...");
+		Family.showHorseAncestors(Collections.horseID(wybor));
+		PdfExport.exportAncestors(Collections.horseID(wybor), Collections.horseID(wybor).getName());
+	}
+	
+	public static void showOffsprings()	{
+		System.out.print("Podaj ID konia, ktorego potomkow chcesz znalezc: ");
+		int wybor = EasyIn.getInt();
+		System.out.println("Trwa przeszukiwanie bazy, prosze czekac...");
+		Family.showHorseOffspring(Collections.horseID(wybor));
+		PdfExport.exportOffsprings(Collections.horseID(wybor),Collections.horseID(wybor).getName());
+	}
 }

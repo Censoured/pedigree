@@ -24,7 +24,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public abstract class PdfExport {
-	private static String FILE = "file.pdf";
 	  private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
 	      Font.BOLD);
 	  private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -34,32 +33,32 @@ public abstract class PdfExport {
 	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
 	      Font.BOLD);
 	
-	public static void exportAncestors(Horse horse)	{
+	public static void exportAncestors(Horse horse, String filename)	{
 		try {
 			System.out.println("Prosze czekac, trwa tworzenie pliku...");
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(FILE));
+			PdfWriter.getInstance(document, new FileOutputStream(filename+".pdf"));
 			document.open();
 			addMetaData(document);
 			addContentAncestors(document, horse);
 			document.close();
-			System.out.println("Wyeksportowano do pliku 'file.pdf'");
+			System.out.println("Wyeksportowano do pliku "+filename+"_ancestors.pdf");
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void exportOffsprings(Horse horse)	{
+	public static void exportOffsprings(Horse horse, String filename)	{
 		try {
 			System.out.println("Prosze czekac, trwa tworzenie pliku...");
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(FILE));
+			PdfWriter.getInstance(document, new FileOutputStream(filename+"_offsprings.pdf"));
 			document.open();
 			addMetaData(document);
 			addContentOffspring(document, horse);
 			document.close();
-			System.out.println("Wyeksportowano do pliku 'file.pdf'");
+			System.out.println("Wyeksportowano do pliku "+filename+"_ancestors.pdf");
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -79,49 +78,60 @@ public abstract class PdfExport {
 		document.add(catPart);
 	}
 	private static void addContentAncestors(Document document, Horse horse) throws DocumentException {
-		Anchor anchor = new Anchor("First Chapter", catFont);
-		anchor.setName("First Chapter");
-
-		// Second parameter is the number of the chapter
+		Anchor anchor = new Anchor("Drzewo rodowodowe konia "+horse.getName(), catFont);
 		Chapter catPart = new Chapter(new Paragraph(anchor), 1);
-
-		// add a table
-		createTable(catPart);
-
-		// now add all this to the document
+		createTable(catPart, horse);
 		document.add(catPart);
 	}
 
 
-	private static void createTable(Section subCatPart) throws BadElementException {
-		PdfPTable table = new PdfPTable(4);
+	private static void createTable(Section subCatPart, Horse horse) throws BadElementException {
+		PdfPTable table = new PdfPTable(7);
 
 	    // t.setBorderColor(BaseColor.GRAY);
 	    // t.setPadding(4);
 	    // t.setSpacing(4);
 	    // t.setBorderWidth(1);
-
-	    PdfPCell c1 = new PdfPCell(new Phrase("Table Header 1"));
-	    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-	    table.addCell(c1);
-
-	    c1 = new PdfPCell(new Phrase("Table Header 2"));
-	    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-	    table.addCell(c1);
-
-	    c1 = new PdfPCell(new Phrase("Table Header 3"));
-	    c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-	    table.addCell(c1);
-	    table.setHeaderRows(1);
-
-	    table.addCell("1.0");
-	    table.addCell("1.1");
-	    table.addCell("1.2");
-	    table.addCell("1.3");
-	    table.addCell("2.0");
-	    table.addCell("2.1");
-	    table.addCell("2.2");
-	    table.addCell("2.3");
+		//pierwszy wiersz
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(horse.getName());
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    //drugi wiersz
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    //trzeci wiersz
+	    table.addCell(" ");
+	    table.addCell(horse.getDam().getName());
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(horse.getSire().getName());
+	    table.addCell(" ");
+	    //czwarty wiersz
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    table.addCell(" ");
+	    //piaty wiersz
+	    table.addCell(horse.getDam().getDam().getName());
+	    table.addCell(" ");
+	    table.addCell(horse.getDam().getSire().getName());
+	    table.addCell(" ");
+	    table.addCell(horse.getSire().getDam().getName());
+	    table.addCell(" ");
+	    table.addCell(horse.getSire().getSire().getName());
 
 	    subCatPart.add(table);
 

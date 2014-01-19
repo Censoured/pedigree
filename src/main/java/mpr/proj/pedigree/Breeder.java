@@ -14,7 +14,10 @@ public class Breeder {
     
     @Override
     public String toString() {
-            return String.format("%4d %60s %30s", this.id, this.name, this.country.getName());
+            return String.format("%4d %15s %30s", 
+            		this.id, 
+            		this.name, 
+            		this.country.getName());
     }
 
     public long getId() {
