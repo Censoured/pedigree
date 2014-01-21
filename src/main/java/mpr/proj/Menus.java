@@ -128,8 +128,8 @@ public abstract class Menus {
 	public static void showAncestors(){
 		System.out.print("Podaj ID konia, ktorego przodkow chcesz znalezc: ");
 		int wybor = EasyIn.getInt();
-		System.out.println("Trwa przeszukiwanie bazy, prosze czekac...");
-		Family.showHorseAncestors(Collections.horseID(wybor));
+		System.out.println("Imie: ");
+		Family.getParents(Collections.horseID(wybor), 3, 1);
 		PdfExport.exportAncestors(Collections.horseID(wybor), Collections.horseID(wybor).getName());
 	}
 	

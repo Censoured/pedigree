@@ -1,18 +1,15 @@
 package mpr.proj;
 
 import java.io.FileOutputStream;
-import java.util.Date;
 import java.util.Set;
 
 import mpr.proj.pedigree.Horse;
 
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
@@ -24,14 +21,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public abstract class PdfExport {
-	  private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
-	      Font.BOLD);
-	  private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-	      Font.NORMAL, BaseColor.RED);
-	  private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
-	      Font.BOLD);
-	  private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
-	      Font.BOLD);
+	  
+	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
 	
 	public static void exportAncestors(Horse horse, String filename)	{
 		try {
@@ -84,10 +75,13 @@ public abstract class PdfExport {
 		document.add(catPart);
 	}
 
-
 	private static void createTable(Section subCatPart, Horse horse) throws BadElementException {
 		PdfPTable table = new PdfPTable(7);
 		//pierwszy wiersz
+		
+		PdfPCell c1 = new PdfPCell(new Phrase(horse.getName()));
+		c1.setColspan(8);
+		table.addCell(c1);
 	    table.addCell(" ");
 	    table.addCell(" ");
 	    table.addCell(" ");
@@ -140,11 +134,4 @@ public abstract class PdfExport {
 		}
 	    subCatPart.add(list);
 	}
-
-	private static void addEmptyLine(Paragraph paragraph, int number) {
-	    for (int i = 0; i < number; i++) {
-	    	paragraph.add(new Paragraph(" "));
-	    }
-	}
-
 }

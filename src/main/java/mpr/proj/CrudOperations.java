@@ -111,6 +111,7 @@ public abstract class CrudOperations {
 	}	
 	public static void addHorse()	{
 		try	{
+			int matka, ojciec, bufor=0;
 			String queryStr = "INSERT INTO HORSE (NAME, SEX, COLOR, DOB, YEARONLY, DAM, SIRE, BREEDER) VALUES (?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj imie: ");
@@ -123,10 +124,24 @@ public abstract class CrudOperations {
 			String data = EasyIn.getString();
 			System.out.print("Podaj czy tylko rok: ");
 			int rok = EasyIn.getInt();
-			System.out.print("Podaj id matki: ");
-			int matka = EasyIn.getInt();
-			System.out.print("Podaj id ojca: ");
-			int ojciec = EasyIn.getInt();
+			do	{
+				if(bufor>0)	{
+					System.out.println("Podany kon nie jest klacza!");
+				}
+				System.out.print("Podaj id matki: ");
+				matka = EasyIn.getInt();
+				bufor++;
+			} while(Collections.horseID(matka).getSex()!=Sex.MARE);
+			bufor = 0;
+			do	{	
+				if(bufor>0)	{
+					System.out.println("Podany kon nie jest klacza!");
+				}
+				System.out.print("Podaj id ojca: ");
+				ojciec = EasyIn.getInt();
+				bufor++;
+			} while(Collections.horseID(ojciec).getSex()!=Sex.STALLION);
+			bufor = 0;
 			System.out.print("Podaj id wlasciciela: ");
 			int wlasciciel = EasyIn.getInt();
 			stmt.setString(1, godnosc);
@@ -223,6 +238,7 @@ public abstract class CrudOperations {
 	}
 	public static void updateHorse()	{
 		try	{
+			int matka,ojciec,bufor=0;
 			String queryStr = "UPDATE HORSE SET NAME=(?), SEX=(?), COLOR=(?), DOB=(?), YEARONLY=(?), DAM=(?), SIRE=(?), BREEDER=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			System.out.print("Podaj ID wpisu do edytowania: ");
@@ -237,10 +253,24 @@ public abstract class CrudOperations {
 			String data = EasyIn.getString();
 			System.out.print("Podaj czy tylko rok: ");
 			int rok = EasyIn.getInt();
-			System.out.print("Podaj id matki: ");
-			int matka = EasyIn.getInt();
-			System.out.print("Podaj id ojca: ");
-			int ojciec = EasyIn.getInt();
+			do	{
+				if(bufor>0)	{
+					System.out.println("Podany kon nie jest klacza!");
+				}
+				System.out.print("Podaj id matki: ");
+				matka = EasyIn.getInt();
+				bufor++;
+			} while(Collections.horseID(matka).getSex()!=Sex.MARE);
+			bufor = 0;
+			do	{	
+				if(bufor>0)	{
+					System.out.println("Podany kon nie jest klacza!");
+				}
+				System.out.print("Podaj id ojca: ");
+				ojciec = EasyIn.getInt();
+				bufor++;
+			} while(Collections.horseID(ojciec).getSex()!=Sex.STALLION);
+			bufor = 0;
 			System.out.print("Podaj id wlasciciela: ");
 			int wlasciciel = EasyIn.getInt();
 			stmt.setString(1, godnosc);

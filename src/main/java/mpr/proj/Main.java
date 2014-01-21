@@ -9,6 +9,7 @@ public class Main {
     		System.out.println("Nawiazano polaczenie z baza danych.");
     	}
     	Collections.setConnection(con);
+    	CrudOperations.setConnection(con);
     	Menus.mainMenu();
     	con.close();
     }
