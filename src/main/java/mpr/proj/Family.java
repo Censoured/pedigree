@@ -5,7 +5,7 @@ import java.util.Set;
 import mpr.proj.pedigree.Horse;
 
 public abstract class Family {
-	
+	//rekurencja
 	public static void getParents(Horse horse, int deep, int tab)	{
 		if(deep>0){
 			if(horse.getDam()!=null)	{

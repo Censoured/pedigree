@@ -20,6 +20,10 @@ public class Horse {
         this.sire = sire;
         this.dam = dam;
         this.breeder = breeder;
+        
+    }
+    public Horse()	{
+    	
     }
 
     public void setName(String name) {

@@ -128,9 +128,11 @@ public abstract class Menus {
 	public static void showAncestors(){
 		System.out.print("Podaj ID konia, ktorego przodkow chcesz znalezc: ");
 		int wybor = EasyIn.getInt();
+		System.out.print("Podaj glebokosc drzewa do przeszukania (rodzice to drugie pokolenie): ");
+		int deep = EasyIn.getInt();
 		System.out.println("Imie: ");
-		Family.getParents(Collections.horseID(wybor), 3, 1);
-		PdfExport.exportAncestors(Collections.horseID(wybor), Collections.horseID(wybor).getName());
+		Family.getParents(Collections.horseID(wybor), deep, 1);
+		PdfExport.exportAncestors(Collections.horseID(wybor), Collections.horseID(wybor).getName(), deep);
 	}
 	
 	public static void showOffsprings()	{
