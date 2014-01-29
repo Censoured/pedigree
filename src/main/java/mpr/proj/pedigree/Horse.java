@@ -10,6 +10,7 @@ public class Horse {
     private Horse sire;
     private Horse dam;
     private Breeder breeder;
+    private int yearonly;
 
     public Horse(long id, String name, Sex sex, DateOfBirth dob, Color color, Horse sire, Horse dam, Breeder breeder) {
         this.id = id;
@@ -20,6 +21,19 @@ public class Horse {
         this.sire = sire;
         this.dam = dam;
         this.breeder = breeder;
+        
+    }
+    
+    public Horse(long id, String name, Sex sex, DateOfBirth dob, int yearonly, Color color, Horse sire, Horse dam, Breeder breeder) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.dob = dob;
+        this.color = color;
+        this.sire = sire;
+        this.dam = dam;
+        this.breeder = breeder;
+        this.yearonly = yearonly;
         
     }
     public Horse()	{
@@ -40,6 +54,10 @@ public class Horse {
 
     public String getName() {
     	return name;
+    }
+    
+    public int getYearOnly()	{
+    	return yearonly;
     }
 
     public void setSex(Sex sex)	{

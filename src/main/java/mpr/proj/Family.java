@@ -37,16 +37,6 @@ public abstract class Family {
 		}
 	}
 	
-	public static void showHorseAncestors(Horse horse)	{
-		System.out.println("Imie: "+horse.getName());
-		System.out.println(" -> Matka:  "+horse.getDam().getName());
-		System.out.println("    -> Babcia:  "+horse.getDam().getDam().getName());
-		System.out.println("    -> Dziadek: "+horse.getDam().getSire().getName());
-		System.out.println(" -> Ojciec: "+horse.getSire().getName());
-		System.out.println("    -> Babcia:  "+horse.getSire().getDam().getName());
-		System.out.println("    -> Dziadek: "+horse.getSire().getSire().getName());
-	}
-
 	public static void showHorseOffspring(Horse horse)	{
 		System.out.println("Potomstwo konia "+horse.getName());
 		System.out.println("Trwa przeszukiwanie bazy, prosze czekac...");

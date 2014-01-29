@@ -64,5 +64,11 @@ public class Country {
     public String getCode() {
         return code;
     }
+    public long getId(){
+    	return id;
+    }
+    public void setId(long id)	{
+    	this.id = id;
+    }
 }
 

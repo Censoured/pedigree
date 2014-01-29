@@ -28,6 +28,14 @@ public class Color {
 		return sname;
 	}
 	
+	public long getId()	{
+		return id;
+	}
+	
+	public void setId(long id)	{
+		this.id = id;
+	}
+	
 	@Override
 	public String toString()	{
 		return String.format("%4d %12s %18s", this.id, this.lname, this.sname);

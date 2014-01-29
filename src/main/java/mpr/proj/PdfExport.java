@@ -109,49 +109,8 @@ public abstract class PdfExport {
 	
 	private static void createTable(Section subCatPart, Horse horse, int deep) throws BadElementException {
 		PdfPTable table = new PdfPTable(deep+1);
-		/*pierwszy wiersz
-		String [][] dane = new String[deep][deep*2];*/
 		getParents(horse, deep, table);
-		
-		/*PdfPCell c1 = new PdfPCell(new Phrase(horse.getName()));
-		c1.setColspan((int)Math.pow(2, deep));
-		table.addCell(c1);*/
-		/*for(int i=1;i<=deep; i++)	{
-			for(int j=1; j<=Math.pow(2, i-1);j++)	{
-				PdfPCell c2 = new PdfPCell(new Phrase("<3"));
-				c2.setFixedHeight(32);
-				c2.setColspan((int)Math.pow(2, deep-i+1));
-				c2.setHorizontalAlignment(Element.ALIGN_CENTER);
-				table.addCell(c2);
-			}
-		}*/
-		/*PdfPCell c1 = new PdfPCell(new Phrase(horse.getName()));
-		c1.setColspan(8);
-		table.addCell(c1);
-	    //2nd
-		c1 = new PdfPCell(new Phrase(horse.getDam().getName()));
-		c1.setColspan(4);
-		table.addCell(c1);
-		c1 = new PdfPCell(new Phrase(horse.getSire().getName()));
-		c1.setColspan(4);
-		table.addCell(c1);
-	    //piaty wiersz
-		c1 = new PdfPCell(new Phrase(horse.getDam().getDam().getName()));
-		c1.setColspan(2);
-		table.addCell(c1);
-	    c1 = new PdfPCell(new Phrase(horse.getDam().getSire().getName()));
-		c1.setColspan(2);
-		table.addCell(c1);
-	    c1 = new PdfPCell(new Phrase(horse.getSire().getDam().getName()));
-		c1.setColspan(2);
-		table.addCell(c1);
-	    c1 = new PdfPCell(new Phrase(horse.getSire().getSire().getName()));
-		c1.setColspan(2);
-		table.addCell(c1);
-		*/
-
 	    subCatPart.add(table);
-
 	}
 
 	private static void createList(Section subCatPart, Horse horse) {
