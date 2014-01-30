@@ -40,7 +40,9 @@ public class Horse {
     	
     }
 
-    public void setName(String name) {
+   
+
+	public void setName(String name) {
     	this.name = name;
     }
     
@@ -120,5 +122,4 @@ public class Horse {
                             this.dam != null ? this.dam.getName() : "Nieznane",
                             this.breeder != null ? this.breeder.getName() : "Nieznane");
     }
-
 }

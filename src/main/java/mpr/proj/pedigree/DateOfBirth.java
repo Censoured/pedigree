@@ -16,12 +16,17 @@ public class DateOfBirth {
         this.date = date;
         this.yearOnly = yearOnly;
     }
-    public String getDate() {
+    @SuppressWarnings("deprecation")
+	public String getDate() {
         if (yearOnly) {
-            return "2013";
+            return Integer.toString(date.getYear());
         } else {
-            return "2013-12-14";
+            return date.toString();
         }
+    }
+    @SuppressWarnings("deprecation")
+	public int getYear()	{
+    	return date.getYear();
     }
     
     @Override

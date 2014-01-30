@@ -60,18 +60,24 @@ public abstract class CrudOperations {
 		} 
 	}
 	
+	@SuppressWarnings("null")
 	public static Breeder addBreeder(Breeder breeder)	{
+		return addBreeder(breeder, (Integer) null);
+	}
+	
+	public static Breeder addBreeder(Breeder breeder, int id)	{
 		try	{
-			String queryStr = "INSERT INTO BREEDER (NAME, COUNTRY) VALUES (?,?)";
+			String queryStr = "INSERT INTO BREEDER (ID, NAME, COUNTRY) VALUES (?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			stmt.setString(1, breeder.getName());
-			stmt.setInt(2, (int) breeder.getCountry().getId());
+			stmt.setInt(1, id);
+			stmt.setString(2, breeder.getName());
+			stmt.setInt(3, (int) breeder.getCountry().getId());
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Dodano wpis "+breeder.getName()+", "+breeder.getCountry().getId()+" do tabeli Breeder.");
-				return new Breeder(0, breeder.getName(), Collections.countryID(breeder.getCountry().getId()));
+				return new Breeder(id, breeder.getName(), Collections.countryID(breeder.getCountry().getId()));
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie dodano nowego wpisu do tabeli Breeder");
 			}
 		}
 		catch (Exception ex) {
@@ -80,18 +86,24 @@ public abstract class CrudOperations {
 		return null;
 	}	
 	
+	@SuppressWarnings("null")
 	public static Color addColor(Color color)	{
+		return addColor(color, (Integer) null);
+	}
+	
+	public static Color addColor(Color color, int id)	{
 		try	{
-			String queryStr = "INSERT INTO COLOR (LNAME, SNAME) VALUES (?,?)";
+			String queryStr = "INSERT INTO COLOR (ID, LNAME, SNAME) VALUES (?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			stmt.setString(1, color.getLname());
-			stmt.setString(2, color.getSname());
+			stmt.setInt(1, id);
+			stmt.setString(2, color.getLname());
+			stmt.setString(3, color.getSname());
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Dodano wpis "+color.getLname()+", "+color.getSname()+" do tabeli Color.");
-				return new Color(0, color.getLname(), color.getSname());
+				return new Color(id, color.getLname(), color.getSname());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie dodano nowego wpisu do tabeli Color");
 			}
 		}
 		catch (Exception ex) {
@@ -100,18 +112,24 @@ public abstract class CrudOperations {
 		return null;
 	}
 	
+	@SuppressWarnings("null")
 	public static Country addCountry(Country country)	{
+		return addCountry(country, (Integer) null);
+	}
+	
+	public static Country addCountry(Country country, int id)	{
 		try	{
-			String queryStr = "INSERT INTO COUNTRY (NAME, CODE) VALUES (?,?)";
+			String queryStr = "INSERT INTO COUNTRY (ID, NAME, CODE) VALUES (?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			stmt.setString(1, country.getName());
-			stmt.setString(2, country.getCode());
+			stmt.setInt(1, id);
+			stmt.setString(2, country.getName());
+			stmt.setString(3, country.getCode());
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Dodano wpis "+country.getName()+", "+country.getCode()+" do tabeli Country.");
-				return new Country(0, country.getName(), country.getCode());
+				return new Country(id, country.getName(), country.getCode());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie dodano nowego wpisu do tabeli Country");
 			}
 		}
 		catch (Exception ex) {
@@ -120,26 +138,32 @@ public abstract class CrudOperations {
 		return null;
 	}	
 	
+	@SuppressWarnings("null")
 	public static Horse addHorse(Horse horse)	{
+		return addHorse(horse, (Integer) null);
+	}
+	
+	public static Horse addHorse(Horse horse, int id)	{
 		try	{
 			
-			String queryStr = "INSERT INTO HORSE (NAME, SEX, COLOR, DOB, YEARONLY, DAM, SIRE, BREEDER) VALUES (?,?,?,?,?,?,?,?)";
+			String queryStr = "INSERT INTO HORSE (ID, NAME, SEX, COLOR, DOB, YEARONLY, DAM, SIRE, BREEDER) VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			
-			stmt.setString(1, horse.getName());
-			stmt.setInt(2, horse.getSex().ordinal());
-			stmt.setInt(3, (int)horse.getColor().getId());
-			stmt.setString(4, horse.getDob().toString());
-			stmt.setInt(5, horse.getYearOnly());
-			stmt.setInt(6, (int)horse.getDam().getID());
-			stmt.setInt(7, (int)horse.getSire().getID());
-			stmt.setInt(8, (int)horse.getBreeder().getId());
+			stmt.setInt(1, id);
+			stmt.setString(2, horse.getName());
+			stmt.setInt(3, horse.getSex().ordinal());
+			stmt.setInt(4, (int)horse.getColor().getId());
+			stmt.setString(5, horse.getDob().toString());
+			stmt.setInt(6, horse.getYearOnly());
+			stmt.setInt(7, (int)horse.getDam().getID());
+			stmt.setInt(8, (int)horse.getSire().getID());
+			stmt.setInt(9, (int)horse.getBreeder().getId());
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Dodano wpis "+horse.getName()+", "+horse.getSex().name()+", "+horse.getColor().getLname()+", "+horse.getDob().toString()+", "+horse.getYearOnly()+", "+horse.getDam().getName()+", "+horse.getSire().getName()+", "+horse.getBreeder().getName()+" do tabeli Horse.");
-				return new Horse(0, horse.getName(), getSex(horse.getSex().ordinal()), horse.getDob(), horse.getColor(), horse.getDam(), horse.getSire(), horse.getBreeder());
+				return new Horse(id, horse.getName(), getSex(horse.getSex().ordinal()), horse.getDob(), horse.getColor(), horse.getDam(), horse.getSire(), horse.getBreeder());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie dodano nowego wpisu do tabeli Horse");
 			}
 		}
 		catch (Exception ex) {
@@ -160,7 +184,7 @@ public abstract class CrudOperations {
 				return breeder = new Breeder(0, breeder.getName(), Collections.countryID(breeder.getCountry().getId()));
 			} 
 			else	{
-				System.out.println("Nie zmieniono wpisu");
+				System.out.println("Nie zmieniono wpisu w tabeli Breeder");
 			}
 		}
 		catch (Exception ex) {
@@ -181,7 +205,7 @@ public abstract class CrudOperations {
 				return color = new Color(0, color.getLname(), color.getSname());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie zmieniono wpisu w tabeli Color");
 			}
 		}
 		catch (Exception ex) {
@@ -202,7 +226,7 @@ public abstract class CrudOperations {
 				return country = new Country(0, country.getName(), country.getCode());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie zmieniono wpisu w tabeli Country");
 			}
 		}
 		catch (Exception ex) {
@@ -213,7 +237,6 @@ public abstract class CrudOperations {
 	
 	public static Horse updateHorse(Horse horse, int id)	{
 		try	{
-			int matka,ojciec,bufor=0;
 			String queryStr = "UPDATE HORSE SET NAME=(?), SEX=(?), COLOR=(?), DOB=(?), YEARONLY=(?), DAM=(?), SIRE=(?), BREEDER=(?) WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			stmt.setString(1, horse.getName());
@@ -224,12 +247,13 @@ public abstract class CrudOperations {
 			stmt.setInt(6, (int)horse.getDam().getID());
 			stmt.setInt(7, (int)horse.getSire().getID());
 			stmt.setInt(8, (int)horse.getBreeder().getId());
+			stmt.setInt(9, id);
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Dodano wpis "+horse.getName()+", "+horse.getSex().name()+", "+horse.getColor().getLname()+", "+horse.getDob().toString()+", "+horse.getYearOnly()+", "+horse.getDam().getName()+", "+horse.getSire().getName()+", "+horse.getBreeder().getName()+" do tabeli Horse.");
 				return new Horse(0, horse.getName(), getSex(horse.getSex().ordinal()), horse.getDob(), horse.getColor(), horse.getDam(), horse.getSire(), horse.getBreeder());
 			} 
 			else	{
-				System.out.println("Nie dodano nowego wpisu");
+				System.out.println("Nie zmieniono wpisu w tabeli Horse");
 			}
 		}
 		catch (Exception ex) {
@@ -238,18 +262,16 @@ public abstract class CrudOperations {
 		return null;
 	}
 	
-	public static void deleteBreeder()	{
+	public static void deleteBreeder(int id)	{
 		try	{
 			String queryStr = "DELETE FROM BREEDER WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
-			int id = EasyIn.getInt();
 			stmt.setInt(1, id);
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Usunieto wpis o id="+id+" z tabeli Breeder.");
 			} 
 			else	{
-				System.out.println("Nie usunieto wpisu");
+				System.out.println("Nie usunieto wpisu z tabeli Breeder");
 			}
 		}
 		catch (Exception ex) {
@@ -257,18 +279,16 @@ public abstract class CrudOperations {
 		}	
 	}
 	
-	public static void deleteColor()	{
+	public static void deleteColor(int id)	{
 		try	{
 			String queryStr = "DELETE FROM COLOR WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
-			int id = EasyIn.getInt();
 			stmt.setInt(1, id);
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Usunieto wpis o id="+id+" z tabeli Color.");
 			} 
 			else	{
-				System.out.println("Nie usunieto wpisu");
+				System.out.println("Nie usunieto wpisu z tabeli Color");
 			}
 		}
 		catch (Exception ex) {
@@ -276,18 +296,16 @@ public abstract class CrudOperations {
 		}
 	}
 	
-	public static void deleteCountry()	{
+	public static void deleteCountry(int id)	{
 		try	{
 			String queryStr = "DELETE FROM COUNTRY WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
-			int id = EasyIn.getInt();
 			stmt.setInt(1, id);
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Usunieto wpis o id="+id+" z tabeli Country.");
 			} 
 			else	{
-				System.out.println("Nie usunieto wpisu");
+				System.out.println("Nie usunieto wpisu z tabeli Country");
 			}
 		}
 		catch (Exception ex) {
@@ -295,18 +313,16 @@ public abstract class CrudOperations {
 		}
 	}
 	
-	public static void deleteHorse()	{
+	public static void deleteHorse(int id)	{
 		try	{
 			String queryStr = "DELETE FROM HORSE WHERE ID=(?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
-			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
-			int id = EasyIn.getInt();
 			stmt.setInt(1, id);
 			if(stmt.executeUpdate()>=1)	{
 				System.out.println("Usunieto wpis o id="+id+" z tabeli Horse.");
 			} 
 			else	{
-				System.out.println("Nie usunieto wpisu");
+				System.out.println("Nie usunieto wpisu z tabeli Horse");
 			}
 		}
 		catch (Exception ex) {

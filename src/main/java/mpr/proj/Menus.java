@@ -220,16 +220,24 @@ public abstract class Menus {
 		System.out.print("Wybierz tabele do pomniejszenia: ");
 		int podglad = EasyIn.getInt();
 		if(podglad==1)	{
-			CrudOperations.deleteBreeder();
+			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
+			int id = EasyIn.getInt();
+			CrudOperations.deleteBreeder(id);
 		}
 		if(podglad==2)	{
-			CrudOperations.deleteColor();
+			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
+			int id = EasyIn.getInt();
+			CrudOperations.deleteColor(id);
 		}
 		if(podglad==3)	{
-			CrudOperations.deleteCountry();
+			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
+			int id = EasyIn.getInt();
+			CrudOperations.deleteCountry(id);
 		}
-		if(podglad==4)	{
-			CrudOperations.deleteHorse();
+		if(podglad==4)	
+			System.out.print("Podaj id wpisu ktory chcesz usunac: ");
+			int id = EasyIn.getInt();{
+			CrudOperations.deleteHorse(id);
 		}
 	}	
 	
