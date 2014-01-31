@@ -51,7 +51,7 @@ public abstract class PdfExport {
 			addMetaData(document);
 			addContentOffspring(document, horse);
 			document.close();
-			System.out.println("Wyeksportowano do pliku "+filename+"_ancestors.pdf");
+			System.out.println("Wyeksportowano do pliku "+filename+"_offsprings.pdf");
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

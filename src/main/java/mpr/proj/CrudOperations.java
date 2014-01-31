@@ -62,11 +62,12 @@ public abstract class CrudOperations {
 	
 	@SuppressWarnings("null")
 	public static Breeder addBreeder(Breeder breeder)	{
-		return addBreeder(breeder, (Integer) null);
+		return addBreeder(breeder,  (Integer) null);
 	}
 	
 	public static Breeder addBreeder(Breeder breeder, int id)	{
 		try	{
+			
 			String queryStr = "INSERT INTO BREEDER (ID, NAME, COUNTRY) VALUES (?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(queryStr);
 			stmt.setInt(1, id);
@@ -80,7 +81,7 @@ public abstract class CrudOperations {
 				System.out.println("Nie dodano nowego wpisu do tabeli Breeder");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
 		return null;
@@ -106,7 +107,7 @@ public abstract class CrudOperations {
 				System.out.println("Nie dodano nowego wpisu do tabeli Color");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}  
 		return null;
@@ -132,7 +133,7 @@ public abstract class CrudOperations {
 				System.out.println("Nie dodano nowego wpisu do tabeli Country");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
 		return null;
@@ -166,8 +167,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie dodano nowego wpisu do tabeli Horse");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie dodano nowego wpisu do tabeli Horse");
 		}
 		return null;
 	}
@@ -187,8 +189,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie zmieniono wpisu w tabeli Breeder");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie zmieniono wpisu w tabeli Breeder");
 		}
 		return null;
 	}
@@ -208,8 +211,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie zmieniono wpisu w tabeli Color");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie zmieniono wpisu w tabeli Color");
 		}   
 		return null;
 	}
@@ -229,8 +233,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie zmieniono wpisu w tabeli Country");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie zmieniono wpisu w tabeli Country");
 		}
 		return null;
 	}
@@ -256,8 +261,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie zmieniono wpisu w tabeli Horse");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie zmieniono wpisu w tabeli Horse");
 		}
 		return null;
 	}
@@ -274,8 +280,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie usunieto wpisu z tabeli Breeder");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie usunieto wpisu z tabeli Breeder");
 		}	
 	}
 	
@@ -291,8 +298,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie usunieto wpisu z tabeli Color");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie usunieto wpisu z tabeli Color");
 		}
 	}
 	
@@ -308,8 +316,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie usunieto wpisu z tabeli Country");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie usunieto wpisu z tabeli Country");
 		}
 	}
 	
@@ -325,8 +334,9 @@ public abstract class CrudOperations {
 				System.out.println("Nie usunieto wpisu z tabeli Horse");
 			}
 		}
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+			System.out.println("Nie usunieto wpisu z tabeli Horse");
 		}
 	}
 }
